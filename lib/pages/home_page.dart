@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:walletui/util/my_button.dart';
 import 'package:walletui/util/my_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Row(
                   children: [
@@ -54,7 +55,7 @@ class _HomePageState extends State<HomePage> {
 
           //cards
       Container(
-      height: 200,
+      height: 200 ,
       child: PageView(
         scrollDirection: Axis.horizontal,
         controller: _controller,
@@ -66,6 +67,7 @@ class _HomePageState extends State<HomePage> {
               expiryYear: 25,
               color: Colors.deepPurple[300],
             ),
+
             MyCard(
               balance: 325.50,
               cardNumber: 145456,
@@ -73,6 +75,7 @@ class _HomePageState extends State<HomePage> {
               expiryYear: 26,
               color: Colors.blue[300],
             ),
+
             MyCard(
               balance: 700,
               cardNumber: 892234,
@@ -95,43 +98,62 @@ class _HomePageState extends State<HomePage> {
 
        SizedBox(height: 25,),
           //3 buttons -> send //pay // bill
-          Row(children: [
-            //send buuton
-            Column(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                //icon
-                Container(
-                  height: 100,
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(color:Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                  BoxShadow(
-                    color:Colors.grey.shade600,
-                    blurRadius: 10,
-                    )]),
-                  child:Center(
-                  child: Center(child:Image.asset('lib/icons/send money.png')),
-                  ),
-                  ),
-                  SizedBox(height: 12,),
-                  //text
-                  Text('send',
-                  style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey[700]),)
-              ],
-            ) 
+                //send button
+              MyButton(iconImagePath:'lib/icons/send money.png', 
+              buttonText: 'Send',
+              ),
+               
+              //pay button
+              MyButton(
+              iconImagePath: 'lib/icons/credit card.png',
+              buttonText: 'Pay',
+              ),
+            
+              //bills button
+              MyButton(
+                iconImagePath: 'lib/icons/bill.png', 
+                buttonText: 'Bills',
+                ),
+            ],
+            ),
+          ),
 
-            //pay button
-
-            //bills button
-
-          ],)
+          SizedBox(height: 25,),
         
           //column-> stats +transaction
-        ],),
+          Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Column(
+              children: [
+              //statistics
+              Row(children: [
+                Container(height: 80,
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(color:Colors.white,),
+                child: Image.asset('lib/icons/statistics.png',),
+                ),
+                Column(children: [
+                  Text('statistics'),
+                  Text('Payments and income'),
+                ],),
+            
+                Icon(Icons.arrow_forward_ios),
+            
+            
+              ],)
+            
+            
+            ],),
+          )
+
+          
+        ],
+        ),
       ),
     );
   }
