@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:walletui/util/my_button.dart';
 import 'package:walletui/util/my_card.dart';
+import 'package:walletui/util/my_listed_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -120,50 +121,19 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   // Statistics
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(children: [
-                        // Icon
-                      Container(
-                        height: 80,
-                        padding: EdgeInsets.all(12),
-                        decoration: BoxDecoration(color: Colors.white),
-                        child: Image.asset('lib/icons/statistics.png'),
-                      ),
+                  MyListedTile(iconImagePath: 'lib/icons/statistics.png', 
+                  titleText: 'Statistics', 
+                  titleSubTitle: 'Payment and Income'
+                   ),
 
-                      SizedBox(width: 20,),
-                      // Text and statistics info
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Statistics',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                          SizedBox(height: 12),
-                          Text(
-                            'Payments and income',
-                            style: TextStyle(
-                              color: Colors.grey[600],
-                              fontSize: 12,
-                            ),
-                          ),
-                        ],
-                      ),
-                      ],
-                      ),
+                  // Transaction
 
-                      
-                      Icon(Icons.arrow_forward_ios),
+                    MyListedTile(iconImagePath: 'lib/icons/transaction.png', 
+                  titleText: 'Transaction', 
+                  titleSubTitle: 'Transaction History'
+                   ),
 
-                      //transactions
-                      
-                    ],
-                  ),
+
                 ],
               ),
             ),
